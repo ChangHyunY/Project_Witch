@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Stage Assets Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Stage Assets Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c1c661d84fdd2984c9c0a67833ec8fc7
+  m_SerializeEntries:
+  - m_GUID: 1cae4807be7bd1d429256fc3bfe94d56
+    m_Address: Assets/Prefabs/Stage/Actor/Player/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e2e15167dea262f428751a9b10c83a34
+    m_Address: Assets/Prefabs/Stage/Actor/Monsters/Slime/Slime_01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8fd06c47dd0d1c44e9b2ad9d71052e20, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 91803539ef0a7f7449a7a04b710e178d, type: 2}
+    - {fileID: 11400000, guid: fbe008460d1aeff489ecf2ec6b6f86fb, type: 2}

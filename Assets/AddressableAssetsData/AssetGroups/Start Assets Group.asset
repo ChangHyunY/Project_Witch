@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Start Assets Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Start Assets Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 95babd512c6c25f409277ef9a40c19a7
+  m_SerializeEntries:
+  - m_GUID: 7f1e434ad4873aa41a35d6e753cc5e42
+    m_Address: Assets/Prefabs/Start/UI/Canvas_Start.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8fd06c47dd0d1c44e9b2ad9d71052e20, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: af2d49d6c60ccb747aa5d9b30d382a85, type: 2}
+    - {fileID: 11400000, guid: 295c8f7343c85cf4d95d6bd8b1ca11b8, type: 2}
