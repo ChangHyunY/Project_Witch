@@ -10,7 +10,7 @@ namespace Anchor
         Start,
         Main,
         Stage,
-        Map_Demo,
+        Map_01,
     }
 
     public class ResourceHelper
@@ -24,7 +24,7 @@ namespace Anchor
             "Assets/Scenes/start.unity",
             "Assets/Scenes/main.unity",
             "Assets/Scenes/stage.unity",
-            "Assets/Scenes/stage_01.unity",
+            "Assets/Scenes/map_01.unity",
         };
 
         public static void Initalize()
@@ -136,7 +136,7 @@ namespace Anchor
             }
 
             //map load
-            yield return ResourceManager.CoLoadSceneAsync(k_SceneNames[(int)SceneId.Map_Demo], UnityEngine.SceneManagement.LoadSceneMode.Additive, (result) =>
+            yield return ResourceManager.CoLoadSceneAsync(k_SceneNames[(int)SceneId.Map_01], UnityEngine.SceneManagement.LoadSceneMode.Additive, (result) =>
             {
                 success = result;
             });

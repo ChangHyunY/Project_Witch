@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Anchor;
 using Anchor.Unity.Addressables;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -11,14 +8,18 @@ namespace Witch
     {
         public static ComStage Root;
 
-        public AssetReference m_PlayerRef;
-        private Transform m_Player;
+        [SerializeField] private AssetReference m_PlayerRef;
+        private string m_PlayerPath;
 
+        public string PlayerPath
+        {
+            get => m_PlayerPath;
+        }
 
         private void Awake()
         {
-            string player = ResourceManager.GetAddressablePath(m_PlayerRef);
-            m_Player = ResourceHelper.GameObjectBags[(int)GameObjectBagId.Normal].Get<Transform>(player);
+            Root = this;
+            m_PlayerPath = ResourceManager.GetAddressablePath(m_PlayerRef);
         }
     }
 }

@@ -38,6 +38,8 @@ namespace Witch.Actor.Monster
     public class Attack : State<ComSlime>
     {
         private float timer;
+        private float currentToPlayerDistance;
+        private float currentToOriginDistance;
 
         public override void Enter(ComSlime actor)
         {
@@ -46,32 +48,37 @@ namespace Witch.Actor.Monster
 
         public override void Excute(ComSlime actor)
         {
-            float distance = Vector3.Distance(actor.Player.transform.position, actor.OriginPosition);
-            Debug.Log(distance);
+            currentToOriginDistance = Vector3.Distance(actor.transform.position, actor.OriginPosition);
+            currentToPlayerDistance = Vector3.Distance(actor.transform.position, actor.Player.transform.position);
 
-            if (distance > actor.DetectionRadius)
+            if(currentToOriginDistance > actor.DetectionRadius)
             {
-                Debug.Log($"Player So Far");
+                Debug.Log("Player So Far");
                 actor.StateMachine.ChangeState(actor.States[(int)SlimeState.Return]);
             }
-            else if(distance > actor.AttackRange)
+            else if(currentToPlayerDistance > actor.AttackRange)
             {
-                //TODO Move To Player
-                Vector3 toTarget = actor.transform.position;
-                toTarget.y = 0f;
+                Vector3 toTarget = actor.Player.transform.position;
+                toTarget.y = actor.transform.position.y;
 
-                actor.transform.position = Vector3.MoveTowards(actor.transform.position, toTarget, actor.Status.SPEED * Time.deltaTime);
+                actor.Direction = (toTarget - actor.transform.position).normalized;
+                actor.transform.position += actor.Status.SPEED * Time.deltaTime * actor.Direction;
+                actor.transform.rotation = Quaternion.LookRotation(actor.Direction, Vector3.up);
             }
             else
             {
                 timer += Time.deltaTime;
 
-                if(timer >= actor.AttackDelay)
+                if(actor.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
                 {
-                    //TODO Attack
+                    actor.Animator.Play(SlimeState.Idle.ToString());
+                }
+
+                if(timer > actor.AttackDelay)
+                {
                     actor.Animator.Play(SlimeState.Attack.ToString());
 
-                    timer -= timer;
+                    timer -= actor.AttackDelay;
                 }
             }
         }
@@ -101,6 +108,8 @@ namespace Witch.Actor.Monster
 
     public class Return : State<ComSlime>
     {
+        float currentToOriginDistance;
+
         public override void Enter(ComSlime actor)
         {
             actor.Animator.Play(SlimeState.Idle.ToString());
@@ -108,11 +117,13 @@ namespace Witch.Actor.Monster
 
         public override void Excute(ComSlime actor)
         {
-            if (Vector3.Distance(actor.transform.position, actor.OriginPosition) > 1.0f)
-            {
-                Debug.Log($"{actor.transform.position}, {actor.OriginPosition}");
+            currentToOriginDistance = Vector3.Distance(actor.transform.position, actor.OriginPosition);
 
-                actor.transform.position = Vector3.MoveTowards(actor.transform.position, actor.OriginPosition, actor.Status.SPEED * Time.deltaTime);
+            if(currentToOriginDistance >= 0.5f)
+            {
+                actor.Direction = (actor.OriginPosition - actor.transform.position).normalized;
+                actor.transform.position += Time.deltaTime * actor.Status.SPEED * actor.Direction;
+                actor.transform.rotation = Quaternion.LookRotation(actor.Direction, Vector3.up);
             }
             else
             {

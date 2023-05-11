@@ -73,5 +73,12 @@ namespace Anchor.Unity.Addressables
 
             yield return null;
         }
+
+        public static UnityEngine.SceneManagement.Scene GetScene(SceneId id)
+        {
+            UnityEngine.SceneManagement.Scene scene = UnityEngine.SceneManagement.SceneManager.GetSceneByName(id.ToString());
+
+            return scene;
+        }
     }
 }

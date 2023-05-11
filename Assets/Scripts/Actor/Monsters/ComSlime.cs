@@ -34,8 +34,8 @@ namespace Witch.Actor.Monster
 
         private Vector3 m_OriginPosition;
         private float m_DetectionRadius = 10f;
-        [SerializeField] private float m_AttackDelay = 1f;
-        [SerializeField] private float m_AttackRange = 1f;
+        [SerializeField] private float m_AttackDelay;
+        [SerializeField] private float m_AttackRange;
 
         public Vector3 OriginPosition
         {
@@ -57,6 +57,13 @@ namespace Witch.Actor.Monster
             get => m_AttackRange;
         }
 
+        private Vector3 m_Direction;
+        public Vector3 Direction
+        {
+            get => m_Direction;
+            set => m_Direction = value;
+        }
+
         public override void Setup()
         {
             base.Setup();
@@ -66,7 +73,7 @@ namespace Witch.Actor.Monster
                 HP = 30,
                 ATK = 5,
                 DEF = 0,
-                SPEED = 1f,
+                SPEED = 3f,
             };
 
             m_States = new State<ComSlime>[System.Enum.GetValues(typeof(SlimeState)).Length];
@@ -86,42 +93,6 @@ namespace Witch.Actor.Monster
             base.Updated();
 
             m_StateMachine.Excute();
-            //OnSearch();
-        }
-
-        private void OnSearch()
-        {
-            if (m_Player == null)
-            {
-                Collider[] colliders = Physics.OverlapSphere(transform.position, m_DetectionRadius);
-
-                foreach (var collider in colliders)
-                {
-                    if (collider.CompareTag("Player"))
-                    {
-                        Debug.Log($"Player Detected, Length : {Vector3.Distance(collider.transform.position, transform.position)}");
-                        m_Player = collider.GetComponent<ComPlayer>();
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                if (Vector3.Distance(m_Player.transform.position, m_OriginPosition) > m_DetectionRadius)
-                {
-                    Debug.Log($"Player so far");
-                    m_Player = null;
-
-                    //TODO
-                    //ToOrigin
-                }
-            }
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, m_DetectionRadius);
         }
     }
 }

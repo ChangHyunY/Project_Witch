@@ -13,8 +13,7 @@ namespace Witch
         public AssetReference m_Slime;
         private Queue<ComSlime> m_Slimes;
 
-        //private short m_Max = 10;
-        private short m_Max = 1;
+        private short m_Max = 10;
         private short m_Count = 0;
 
         private void Awake()
