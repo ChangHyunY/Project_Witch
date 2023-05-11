@@ -329,12 +329,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Status:
-    HP: 0
-    ATK: 0
+    HP: 30
+    ATK: 5
     DEF: 0
-    SPEED: 0
+    SPEED: 3
+  m_DetectionRadius: 10
   m_AttackDelay: 3
-  m_AttackRange: 1
+  m_AttackRange: 1.5
 --- !u!1 &7534262480104691789
 GameObject:
   m_ObjectHideFlags: 0

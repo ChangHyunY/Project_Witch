@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComSlimeKing : MonoBehaviour
+namespace Witch.Actor.Monster
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ComSlimeKing : BaseMonster<ComSlimeKing>
     {
-        
-    }
+        public override void Setup()
+        {
+            base.Setup();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            m_Status = new Status()
+            {
+                HP = 300,
+                ATK = 15,
+                DEF = 0,
+                SPEED = 1.5f,
+            };
+        }
+
+        private void Update()
+        {
+            base.Updated();
+        }
     }
 }

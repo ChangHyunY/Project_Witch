@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace Witch.Actor.Monster
 {
-    public class Idle : State<ComSlime>
+    public class Idle<T> : State<BaseMonster<T>>
     {
-        public override void Enter(ComSlime actor)
+        public override void Enter(BaseMonster<T> actor)
         {
-            actor.Animator.Play(SlimeState.Idle.ToString());
+            actor.Animator.Play(State.Idle.ToString());
         }
 
-        public override void Excute(ComSlime actor)
+        public override void Excute(BaseMonster<T> actor)
         {
             if (actor.Player == null)
             {
@@ -23,30 +23,30 @@ namespace Witch.Actor.Monster
                     {
                         Debug.Log($"Detected Player");
                         actor.Player = collider.GetComponent<ComPlayer>();
-                        actor.StateMachine.ChangeState(actor.States[(int)SlimeState.Attack]);
+                        actor.StateMachine.ChangeState(actor.States[(int)State.Attack]);
                         break;
                     }
                 }
             }
         }
 
-        public override void Exit(ComSlime actor)
+        public override void Exit(BaseMonster<T> actor)
         {
         }
     }
 
-    public class Attack : State<ComSlime>
+    public class Attack<T> : State<BaseMonster<T>>
     {
         private float timer;
         private float currentToPlayerDistance;
         private float currentToOriginDistance;
 
-        public override void Enter(ComSlime actor)
+        public override void Enter(BaseMonster<T> actor)
         {
             timer = 0f;
         }
 
-        public override void Excute(ComSlime actor)
+        public override void Excute(BaseMonster<T> actor)
         {
             currentToOriginDistance = Vector3.Distance(actor.transform.position, actor.OriginPosition);
             currentToPlayerDistance = Vector3.Distance(actor.transform.position, actor.Player.transform.position);
@@ -54,7 +54,7 @@ namespace Witch.Actor.Monster
             if(currentToOriginDistance > actor.DetectionRadius)
             {
                 Debug.Log("Player So Far");
-                actor.StateMachine.ChangeState(actor.States[(int)SlimeState.Return]);
+                actor.StateMachine.ChangeState(actor.States[(int)State.Return]);
             }
             else if(currentToPlayerDistance > actor.AttackRange)
             {
@@ -71,51 +71,51 @@ namespace Witch.Actor.Monster
 
                 if(actor.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
                 {
-                    actor.Animator.Play(SlimeState.Idle.ToString());
+                    actor.Animator.Play(State.Idle.ToString());
                 }
 
                 if(timer > actor.AttackDelay)
                 {
-                    actor.Animator.Play(SlimeState.Attack.ToString());
+                    actor.Animator.Play(State.Attack.ToString());
 
                     timer -= actor.AttackDelay;
                 }
             }
         }
 
-        public override void Exit(ComSlime actor)
+        public override void Exit(BaseMonster<T> actor)
         {
             actor.Player = null;
         }
     }
 
-    public class Damage : State<ComSlime>
+    public class Damage<T> : State<BaseMonster<T>>
     {
-        public override void Enter(ComSlime actor)
+        public override void Enter(BaseMonster<T> actor)
         {
-            actor.Animator.Play(SlimeState.Damage.ToString());
+            actor.Animator.Play(State.Damage.ToString());
         }
 
-        public override void Excute(ComSlime actor)
+        public override void Excute(BaseMonster<T> actor)
         {
             
         }
 
-        public override void Exit(ComSlime actor)
+        public override void Exit(BaseMonster<T> actor)
         {
         }
     }
 
-    public class Return : State<ComSlime>
+    public class Return<T> : State<BaseMonster<T>>
     {
         float currentToOriginDistance;
 
-        public override void Enter(ComSlime actor)
+        public override void Enter(BaseMonster<T> actor)
         {
-            actor.Animator.Play(SlimeState.Idle.ToString());
+            actor.Animator.Play(State.Idle.ToString());
         }
 
-        public override void Excute(ComSlime actor)
+        public override void Excute(BaseMonster<T> actor)
         {
             currentToOriginDistance = Vector3.Distance(actor.transform.position, actor.OriginPosition);
 
@@ -127,11 +127,11 @@ namespace Witch.Actor.Monster
             }
             else
             {
-                actor.StateMachine.ChangeState(actor.States[(int)SlimeState.Idle]);
+                actor.StateMachine.ChangeState(actor.States[(int)State.Idle]);
             }
         }
 
-        public override void Exit(ComSlime actor)
+        public override void Exit(BaseMonster<T> actor)
         {
         }
     }

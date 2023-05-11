@@ -15,7 +15,7 @@ namespace Witch.Actor.Monster
         public float SPEED;
     }
 
-    public class BaseMonster : Actor<BaseMonster>
+    public class BaseMonster<T> : Actor<BaseMonster<T>>
     {
         [SerializeField] protected Status m_Status;
 
@@ -43,7 +43,7 @@ namespace Witch.Actor.Monster
             get => m_OriginPosition;
         }
 
-        public Vector3 Derection
+        public Vector3 Direction
         {
             get => m_Direction;
             set => m_Direction = value;
@@ -67,6 +67,17 @@ namespace Witch.Actor.Monster
         public override void Setup()
         {
             base.Setup();
+
+            m_States = new State<BaseMonster<T>>[System.Enum.GetValues(typeof(State)).Length];
+            m_States[(int)State.Idle] = new Idle<T>();
+            m_States[(int)State.Attack] = new Attack<T>();
+            m_States[(int)State.Damage] = new Damage<T>();
+            m_States[(int)State.Return] = new Return<T>();
+
+            m_StateMachine = new StateMachine<BaseMonster<T>>();
+            m_StateMachine.Setup(this, m_States[(int)State.Idle]);
+
+            m_OriginPosition = transform.position;
         }
 
         protected override void Updated()
