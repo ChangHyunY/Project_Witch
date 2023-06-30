@@ -67,13 +67,6 @@ namespace Anchor.Unity.Addressables
             }
         }
 
-        public static IEnumerator CoLoadAssetsAsync(string addressable, System.Action<bool> resultCallback)
-        {
-
-
-            yield return null;
-        }
-
         public static UnityEngine.SceneManagement.Scene GetScene(SceneId id)
         {
             UnityEngine.SceneManagement.Scene scene = UnityEngine.SceneManagement.SceneManager.GetSceneByName(id.ToString());

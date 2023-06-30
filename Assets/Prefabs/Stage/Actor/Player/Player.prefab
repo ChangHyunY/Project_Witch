@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32eef6cc7cdbb0147a0b6c82f2e1278d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 5
+  m_MoveSpeed: 3
   m_Direction: {x: 0, y: 0, z: 0}
   m_Movement: {x: 0, y: 0, z: 0}
   m_Look: {x: 0, y: 0}

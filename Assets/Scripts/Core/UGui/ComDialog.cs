@@ -1,25 +1,16 @@
-namespace Anchor.Unity.UGui.Panel
+namespace Anchor.Unity.UGui.Dialog
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
-    public abstract class ComPanel<T> : ComUGui, IPanel where T : ComPanel<T>
+    public abstract class ComDialog : ComUGui
     {
-        private static T s_Root;
+        [SerializeField] DialogId m_Id;
 
-        public static T Root => s_Root;
-
-        [SerializeField] PanelId m_Id;
-        [SerializeField] private bool m_Navigated = false;
-
-        public bool Navigated => m_Navigated;
+        public int Id => (int)m_Id;
 
         protected override void Awake()
         {
-            DialogManager.Add(UGuiId.Panel, this);
-
-            s_Root = this as T;
+            DialogManager.Add(UGuiId.Dialog, this);
         }
 
         protected override void OnDestroy()
@@ -44,7 +35,7 @@ namespace Anchor.Unity.UGui.Panel
             {
                 gameObject.transform.SetAsFirstSibling();
             }
-            if (m_SiblingOnOpen == Sibling.Last)
+            else if (m_SiblingOnOpen == Sibling.Last)
             {
                 gameObject.transform.SetAsLastSibling();
             }
@@ -63,8 +54,13 @@ namespace Anchor.Unity.UGui.Panel
             OnClose();
 
             m_Opened = false;
+            DialogManager.ReturnToPool(this);
+        }
 
-            gameObject.SetActive(false);
+        internal void SetData(System.EventArgs dataArgs, string[] btnText,
+            System.Action<int, System.EventArgs> cliclCallback = null, System.EventArgs callbackArgs = null)
+        {
+            OnSetData(dataArgs);
         }
     }
 }

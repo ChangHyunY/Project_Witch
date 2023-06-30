@@ -29,10 +29,6 @@ MonoBehaviour:
     m_Address: Assets/Scenes/stage.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 95f2bb0cddbab9e4a966ca9c0c059c73
-    m_Address: Assets/Scenes/map_01.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8fd06c47dd0d1c44e9b2ad9d71052e20, type: 2}
   m_SchemaSet:

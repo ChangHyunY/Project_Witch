@@ -64,8 +64,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.35
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!95 &1740676106454079153
 Animator:
   serializedVersion: 4
@@ -98,6 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5376e430b3604545b183d7f276aefbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Status:
+    HP: 0
+    ATK: 0
+    DEF: 0
+    SPEED: 0
+  m_DetectionRadius: 0
+  m_AttackDelay: 0
+  m_AttackRange: 0
 --- !u!1 &2555473679859470979
 GameObject:
   m_ObjectHideFlags: 0

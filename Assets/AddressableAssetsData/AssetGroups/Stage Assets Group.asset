@@ -17,12 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c1c661d84fdd2984c9c0a67833ec8fc7
   m_SerializeEntries:
-  - m_GUID: 1cae4807be7bd1d429256fc3bfe94d56
-    m_Address: Assets/Prefabs/Stage/Actor/Player/Player.prefab
+  - m_GUID: 08e3a38595f519b4f994df72dbad7eea
+    m_Address: Assets/Resource/Stage/Assets
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e2e15167dea262f428751a9b10c83a34
-    m_Address: Assets/Prefabs/Stage/Actor/Monsters/Slime/Slime_01.prefab
+  - m_GUID: dbe05b6a52eab9b4cb904e4b59a22b19
+    m_Address: Assets/Resource/Stage/References
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -135,22 +135,11 @@ namespace Anchor
                 throw new System.Exception();
             }
 
-            //map load
-            yield return ResourceManager.CoLoadSceneAsync(k_SceneNames[(int)SceneId.Map_01], UnityEngine.SceneManagement.LoadSceneMode.Additive, (result) =>
+            //assets get
+            foreach (var asset in keys)
             {
-                success = result;
-            });
-
-            if(!success)
-            {
-                throw new System.Exception();
+                yield return s_GameObjectBags[(int)GameObjectBagId.Normal].Get<Transform>(asset);
             }
-
-            ////assets get
-            //foreach(var asset in keys)
-            //{
-            //    yield return s_GameObjectBags[(int)GameObjectBagId.Normal].Get<Transform>(asset);
-            //}
         }
     }
 }

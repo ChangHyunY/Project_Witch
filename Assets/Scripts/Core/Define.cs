@@ -7,6 +7,17 @@ enum GameObjectBagId
     Normal,
 }
 
+public enum DialogId
+{
+
+}
+
+public enum PanelId
+{
+    Stage,
+    Shop,
+}
+
 public partial class Define
 {
     private static readonly string[] k_StartAssets =
@@ -16,13 +27,8 @@ public partial class Define
 
     private static readonly string[] k_StageAssets =
     {
-        "Assets/Prefabs/Stage/Actor/Player/Player.prefab",
-        "Assets/Prefabs/Stage/Actor/Monsters/Slime/Slime_01.prefab",
-    };
-
-    private static readonly string[] k_StageDefaultAssets =
-    {
-
+        "Assets/Resource/Stage/Assets/Canvas_Stage.prefab",
+        "Assets/Resource/Stage/Assets/Canvas_Shop.prefab",
     };
 
     public static string[] StartAssets => k_StartAssets;
