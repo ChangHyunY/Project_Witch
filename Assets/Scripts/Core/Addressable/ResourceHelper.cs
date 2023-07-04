@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Anchor.Unity.Addressables;
 
-namespace Anchor
+namespace Anchor.Unity
 {
     public enum SceneId
     {
-        Start,
         Main,
-        Stage,
-        Map_01,
+        Login,
+        Start,
     }
 
     public class ResourceHelper
@@ -21,10 +20,9 @@ namespace Anchor
 
         public static readonly string[] k_SceneNames =
         {
-            "Assets/Scenes/start.unity",
-            "Assets/Scenes/main.unity",
-            "Assets/Scenes/stage.unity",
-            "Assets/Scenes/map_01.unity",
+            "Assets/Scenes/Main.unity",
+            "Assets/Scenes/Login.unity",
+            "Assets/Scenes/Start.unity",
         };
 
         public static void Initalize()
@@ -32,11 +30,11 @@ namespace Anchor
             int length = System.Enum.GetValues(typeof(GameObjectBagId)).Length;
             s_GameObjectBags = new GameObjectBag[length];
 
-            for(int i = 0; i < length; ++i)
+            for (int i = 0; i < length; ++i)
             {
                 bool rootGameObjectDontDestroy = true;
 
-                switch((GameObjectBagId)i)
+                switch ((GameObjectBagId)i)
                 {
                     case GameObjectBagId.Normal:
                         rootGameObjectDontDestroy = false;
@@ -59,29 +57,27 @@ namespace Anchor
                 resultCallback?.Invoke();
             };
 
-            switch(scene)
+            switch (scene)
             {
-                case SceneId.Start:
-                    LoadStartScene(callback);
+                case SceneId.Login:
+                    LoadDefaultScene(Define.LoginAssets, SceneId.Login, callback);
                     break;
 
-                case SceneId.Stage:
-                    LoadStageScene(callback);
+                case SceneId.Start:
+                    LoadDefaultScene(Define.StartAssets, SceneId.Start, callback);
                     break;
             }
         }
 
-        private static void LoadStartScene(System.Action<bool> callback = null)
+        private static void LoadDefaultScene(string[] keys, SceneId id, System.Action<bool> callback = null)
         {
-            ComMain.Root.StartCoroutine(CoLoadStartAsset(callback));
+            ComMain.Root.StartCoroutine(CoLoadDefaultScene(keys, id, callback));
         }
 
-        private static IEnumerator CoLoadStartAsset(System.Action<bool> callback = null)
+        private static IEnumerator CoLoadDefaultScene(string[] keys, SceneId id, System.Action<bool> callback = null)
         {
             //canvas load
-            var keys = Define.StartAssets;
-
-            foreach(var asset in keys)
+            foreach (var asset in keys)
             {
                 yield return s_GameObjectBags[(int)GameObjectBagId.Normal].CoLoad(asset, ManageType.Default);
             }
@@ -89,56 +85,21 @@ namespace Anchor
             //scene load
             bool success = false;
 
-            yield return ResourceManager.CoLoadSceneAsync(k_SceneNames[(int)SceneId.Start], UnityEngine.SceneManagement.LoadSceneMode.Single, (result) =>
+            yield return ResourceManager.CoLoadSceneAsync(k_SceneNames[(int)id], UnityEngine.SceneManagement.LoadSceneMode.Single, (result) =>
             {
                 success = result;
             });
 
-            if(!success)
+            if (!success)
             {
                 Debug.LogError("scene load fail");
                 yield break;
             }
 
             //canvas get
-            foreach(var asset in keys)
-            {
-                yield return s_GameObjectBags[(int)GameObjectBagId.Normal].Get<RectTransform>(asset);
-            }
-        }
-
-        private static void LoadStageScene(System.Action<bool> callback = null)
-        {
-            ComMain.Root.StartCoroutine(CoLoadStageAsset(callback));
-        }
-
-        private static IEnumerator CoLoadStageAsset(System.Action<bool> callback = null)
-        {
-            //assets load
-            var keys = Define.StageAssets;
-
-            foreach(var asset in keys)
-            {
-                yield return s_GameObjectBags[(int)GameObjectBagId.Normal].CoLoad(asset, ManageType.Default);
-            }
-
-            //scene load
-            bool success = false;
-
-            yield return ResourceManager.CoLoadSceneAsync(k_SceneNames[(int)SceneId.Stage], UnityEngine.SceneManagement.LoadSceneMode.Single, (result) =>
-            {
-                success = result;
-            });
-
-            if(!success)
-            {
-                throw new System.Exception();
-            }
-
-            //assets get
             foreach (var asset in keys)
             {
-                yield return s_GameObjectBags[(int)GameObjectBagId.Normal].Get<Transform>(asset);
+                yield return s_GameObjectBags[(int)GameObjectBagId.Normal].Get<RectTransform>(asset);
             }
         }
     }

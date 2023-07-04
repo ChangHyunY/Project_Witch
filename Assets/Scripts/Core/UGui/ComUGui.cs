@@ -26,12 +26,15 @@ namespace Anchor.Unity.UGui
         [SerializeField] protected UGuiId m_UGuiType = UGuiId.Panel;
         [SerializeField] protected Sibling m_SiblingOnOpen = Sibling.None;
         [SerializeField] protected ManageType m_ManageType = ManageType.Defalut;
+        [SerializeField] protected bool m_AwakeOnOpen = false;
 
         protected bool m_Opened;
         protected bool m_OpenCalled;
 
         public UGuiId UGuiType => m_UGuiType;
         public ManageType ManageType => m_ManageType;
+
+        public bool AwakeOnOpen => m_AwakeOnOpen;
         public bool Opened => m_Opened;
 
         protected abstract void Awake();

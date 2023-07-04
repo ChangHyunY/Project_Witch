@@ -1,5 +1,6 @@
-namespace Anchor.Unity.UGui
+namespace Anchor.Unity
 {
+    using Anchor.Unity.UGui;
     using Anchor.Unity.UGui.Dialog;
     using Anchor.Unity.UGui.Panel;
     using Anchor.Core.Pool;
@@ -34,12 +35,12 @@ namespace Anchor.Unity.UGui
         {
             if (!s_InitCalled) Initialize();
 
-            uGui.gameObject.SetActive(false);
-
             if (!m_Values[id].Exists(element => element.Component.GetID() == uGui.GetID()))
             {
                 if (uGui.ManageType == ManageType.Pool)
                 {
+                    uGui.gameObject.SetActive(false);
+
                     //TODO
                     //ObjectPool<ComDialog> pool = new ObjectPool<ComDialog>(dialog, 8, dialog.transform.parent);
                     Pool<ComUGui> pool = new Pool<ComUGui>(null, 8, 16, 16);

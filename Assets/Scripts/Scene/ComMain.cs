@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Anchor.Unity.UGui;
+using Anchor.Unity;
 
 namespace Anchor
 {
@@ -22,7 +22,7 @@ namespace Anchor
 
         private void Start()
         {
-            ResourceHelper.LoadScene(SceneId.Start);
+            ResourceHelper.LoadScene(SceneId.Login);
         }
 
         private void Update()
@@ -30,11 +30,6 @@ namespace Anchor
             if(Keyboard.current.escapeKey.wasPressedThisFrame)
             {
                 DialogManager.CloseFromNavigation();
-            }
-
-            if (Keyboard.current.qKey.wasPressedThisFrame)
-            {
-                DialogManager.Open(ComUIShop.Root);
             }
         }
 

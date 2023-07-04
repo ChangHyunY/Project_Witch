@@ -14,7 +14,7 @@ namespace Anchor.Unity.Addressables
 
         public static void Initialize()
         {
-            if(!s_InitCalled)
+            if (!s_InitCalled)
             {
                 s_InitCalled = true;
             }
@@ -24,7 +24,7 @@ namespace Anchor.Unity.Addressables
         {
             string addressable = null;
 
-            if(m_AssetPaths.TryGetValue(assetRef.AssetGUID, out addressable))
+            if (m_AssetPaths.TryGetValue(assetRef.AssetGUID, out addressable))
             {
                 return addressable;
             }
@@ -47,7 +47,36 @@ namespace Anchor.Unity.Addressables
                     {
                         return null;
                     }
-                }                    
+                }
+            }
+        }
+
+        public static void LoadAsset<T>(string addressable, System.Action<T> callback, bool autoRelease = true)
+        {
+            ComMain.Root.StartCoroutine(CoLoadAsset<T>(addressable, callback, autoRelease));
+        }
+
+        public static IEnumerator CoLoadAsset<T>(string addressable, System.Action<T> callback, bool autoRelease = true)
+        {
+            var handle = Addressables.LoadAssetAsync<T>(addressable);
+
+            yield return handle;
+
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                callback?.Invoke(handle.Result);
+            }
+            else
+            {
+                callback?.Invoke(default);
+            }
+
+            if (autoRelease)
+            {
+                if (handle.IsValid())
+                {
+                    Addressables.Release(handle);
+                }
             }
         }
 
@@ -57,7 +86,7 @@ namespace Anchor.Unity.Addressables
 
             yield return handle;
 
-            if(handle.Status == AsyncOperationStatus.Succeeded)
+            if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 resultCallback(true);
             }

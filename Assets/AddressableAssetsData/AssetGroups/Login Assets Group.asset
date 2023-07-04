@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Start Assets Group
+  m_Name: Login Assets Group
   m_EditorClassIdentifier: 
-  m_GroupName: Start Assets Group
+  m_GroupName: Login Assets Group
   m_Data:
     m_SerializedData: []
   m_GUID: 95babd512c6c25f409277ef9a40c19a7
   m_SerializeEntries:
-  - m_GUID: 7f1e434ad4873aa41a35d6e753cc5e42
-    m_Address: Assets/Prefabs/Start/UI/Canvas_Start.prefab
+  - m_GUID: 78d1f4d1bc3cef5439f3599111b57296
+    m_Address: Assets/Resource/Login/Assets
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e8f982cd11414d41a69d1c9c03d5dcf
+    m_Address: Assets/Resource/Login/References
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

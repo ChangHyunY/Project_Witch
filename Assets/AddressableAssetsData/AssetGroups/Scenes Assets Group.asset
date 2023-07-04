@@ -18,15 +18,19 @@ MonoBehaviour:
   m_GUID: 27b78ebddd3885c4599fdf654de77e56
   m_SerializeEntries:
   - m_GUID: 7c059ab59563dd34f91f3069493fb696
-    m_Address: Assets/Scenes/start.unity
+    m_Address: Assets/Scenes/Start.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
-    m_Address: Assets/Scenes/main.unity
+    m_Address: Assets/Scenes/Main.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 137b135cf3e995a40876f6166c8d75ee
-    m_Address: Assets/Scenes/stage.unity
+    m_Address: Assets/Scenes/Stage.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 235b48f7cdc38594da41bd9f30e2245d
+    m_Address: Assets/Scenes/Login.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
