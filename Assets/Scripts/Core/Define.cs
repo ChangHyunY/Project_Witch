@@ -38,13 +38,8 @@ public partial class Define
 
     private static readonly string[] k_StartAssets =
     {
-        
-    };
-
-    private static readonly string[] k_StageAssets =
-    {
         "Assets/Resource/Stage/Assets/Canvas_Stage.prefab",
-        "Assets/Resource/Stage/Assets/Canvas_Shop.prefab",
+        "Assets/Resource/Stage/Assets/Canvas_Shop.prefab",        
     };
 
     private static readonly string[] k_SoundAssets =
@@ -55,8 +50,6 @@ public partial class Define
     public static string[] LoginAssets => k_LoginAssets;
 
     public static string[] StartAssets => k_StartAssets;
-
-    public static string[] StageAssets => k_StageAssets;
 
     public static string[] SoundAssets => k_SoundAssets;
 

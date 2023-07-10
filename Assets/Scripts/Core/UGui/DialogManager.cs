@@ -49,6 +49,8 @@ namespace Anchor.Unity
                 }
                 else
                 {
+                    uGui.gameObject.SetActive(uGui.AwakeOnOpen);
+
                     m_Values[id].Add(new UGuiInfo(uGui));
                 }
             }

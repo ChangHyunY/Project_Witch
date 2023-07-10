@@ -21,16 +21,12 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Start.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
-    m_Address: Assets/Scenes/Main.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 137b135cf3e995a40876f6166c8d75ee
-    m_Address: Assets/Scenes/Stage.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 235b48f7cdc38594da41bd9f30e2245d
+  - m_GUID: d49eae78d2fade448b356f7100b47c80
     m_Address: Assets/Scenes/Login.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3f71bd45c00dd6946abd340cc4483f5a
+    m_Address: Assets/Scenes/Main.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

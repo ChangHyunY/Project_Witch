@@ -240,8 +240,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Guest
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c09ae199ce592bc40bffa5f916bdc5a8, type: 2}
-  m_sharedMaterial: {fileID: 6879079232750767393, guid: c09ae199ce592bc40bffa5f916bdc5a8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_UGuiType: 0
   m_SiblingOnOpen: 2
   m_ManageType: 0
-  m_AwakeOnOpen: 0
+  m_AwakeOnOpen: 1
   m_Id: 0
   m_Navigated: 0
 --- !u!1 &3562100243540150437

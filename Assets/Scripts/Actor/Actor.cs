@@ -19,7 +19,7 @@ namespace Witch.Actor
             get => m_StateMachine;
         }
 
-        private Animator m_Animator;
+        protected Animator m_Animator;
 
         public Animator Animator => m_Animator;
 
@@ -27,7 +27,7 @@ namespace Witch.Actor
         {
             base.Setup();
 
-            m_Animator = GetComponent<Animator>();
+            m_Animator = GetComponentInChildren<Animator>();
         }
 
         protected override void Updated()

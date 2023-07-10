@@ -623,6 +623,7 @@ MonoBehaviour:
   m_UGuiType: 0
   m_SiblingOnOpen: 2
   m_ManageType: 0
+  m_AwakeOnOpen: 1
   m_Id: 0
   m_Navigated: 0
 --- !u!1 &2350422800965430123

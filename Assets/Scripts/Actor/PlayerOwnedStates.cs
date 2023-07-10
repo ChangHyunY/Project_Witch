@@ -29,18 +29,27 @@ namespace Witch.Actor
 
         public override void Excute(Player actor)
         {
+            actor.RigidBody2D.velocity = new Vector2(actor.Direction.x * actor.Status.MoveSpeed, actor.RigidBody2D.velocity.y);
+
+            if(actor.Direction.x != 0)
+            {
+                var scale = actor.transform.localScale;
+                scale.x = actor.Direction.x;
+                actor.transform.localScale = scale;                
+            }
         }
 
         public override void Exit(Player actor)
         {
+            actor.RigidBody2D.velocity = new Vector2(0, actor.RigidBody2D.velocity.y);
         }
     }
 
-    public class Run : State<Player>
+    public class Jump : State<Player>
     {
         public override void Enter(Player actor)
         {
-            actor.Animator.Play(PlayerState.Run.ToString());
+            //actor.Animator.Play(PlayerState.Jump.ToString());
         }
 
         public override void Excute(Player actor)
